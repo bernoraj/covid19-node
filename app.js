@@ -3,10 +3,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var users = require('./routes/users');
-var generate_uid = require('./routes/generate_uid');
 var covid_res=require('./routes/covid');
 var covid_all=require('./routes/covid_all');
+var covid_india_raw=require('./routes/covid_raw');
+var covid_TN=require('./routes/covid_TN');
 
 var app = express();
 
@@ -19,9 +19,9 @@ app.use(function(req, res, next) {
     next();
   });
   
-app.use('/api/v1/users', users);
-app.use('/api/v1/generate_uid', generate_uid);
 app.use('/api/v1/covid', covid_res);
 app.use('/api/v1/covid_all', covid_all);
+app.use('/api/v1/covid_raw',covid_india_raw);
+app.use('/api/v1/covid_TN',covid_TN);
 
 module.exports = app;

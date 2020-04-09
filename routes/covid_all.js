@@ -4,7 +4,7 @@ var router = express.Router();
 var data;
 var request = unirest("GET", "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats");
 
-router.get('/', function(req, res, next)
+router.get('/covid_all', function(req, res, next)
 {
 
 
@@ -18,7 +18,7 @@ request.end(function (res) {
 	if (res.error) throw new Error(res.error);
     
     data=res.body;
-    console.log(data);
+    //console.log(data);
 });
 
 
