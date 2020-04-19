@@ -58,5 +58,22 @@ router.get('/dash', function(req, res, next)
 });
 
 
+router.get('/patient', function(req, res, next)
+{
+
+    MongoClient.connect(config.DB, {useNewUrlParser:true ,useUnifiedTopology: true}, function(err, client) {
+        if (err) throw err;
+        var db = client.db('covid');
+         db.collection("covid_misc").find({}).toArray(function(err, result) {
+          if (err) throw err;
+            res.json(result);
+            client.close(); 
+          });
+        }); 
+ 
+   
+});
+
+
 
 module.exports = router;
